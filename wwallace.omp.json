@@ -7,16 +7,10 @@
         {
           "type": "session",
           "style": "plain",
-          "template": "\ueb99 {{if .Root}}root{{end}}",
+          "template": "\ueb99 {{if .Root}}root{{end}}{{if .SSHSession }}\udb86\udecb{{ .HostName }}{{else}}\udb84\udc4d {{end}}",
           "foreground_templates": [
-            "{{if .Root}}red{{else}}cyan{{end}}"
+            "{{if .Root}}red{{else if .SSHSession}}yellow{{else}}cyan{{end}}"
           ]
-        },
-        {
-          "type": "session",
-          "style": "plain",
-          "foreground": "yellow",
-          "template": "{{if .SSHSession }}@{{ .HostName }}{{end}}"
         },
         {
           "type": "git",
