@@ -13,6 +13,12 @@
           ]
         },
         {
+          "type": "session",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": "{{if .SSHSession }}@{{ .HostName }}{{end}}"
+        },
+        {
           "type": "git",
           "style": "plain",
           "foreground": "cyan",
