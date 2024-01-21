@@ -5,34 +5,83 @@
       "alignment": "left",
       "segments": [
         {
-          "type": "session",
-          "style": "plain",
-          "template": "\ueb99 {{if .Root}}root{{end}}{{if .SSHSession }}\udb86\udecb {{ .HostName }}{{else}}\udb84\udc4d {{end}}",
-          "foreground_templates": [
-            "{{if .Root}}red{{else if .SSHSession}}yellow{{else}}cyan{{end}}"
-          ]
-        },
-        {
-          "type": "git",
-          "style": "plain",
           "foreground": "cyan",
-          "template": "\uf418"
+          "foreground_templates": [
+            "{{ if .Root }}red{{ end }}",
+            "{{ if .SSHSession }}yellow{{ end }}",
+            "{{ if .Env.SUDO_USER }}yellow{{ end }}"
+          ],
+          "style": "plain",
+          "template": "{{.UserName}}@{{ .HostName }} ",
+          "type": "session"
         }
       ],
       "type": "prompt"
     },
     {
       "alignment": "left",
-      "type": "prompt",
       "segments": [
         {
-          "type": "path",
-          "foreground": "lightYellow",
           "style": "plain",
-          "template": " {{ .Path }}",
+          "template": "<darkGray,>[</>",
+          "type": "text"
+        },
+        {
+          "foreground": "cyan",
+          "background_templates": [
+            "{{if .Rebase}}red{{end}}",
+            "{{if .Merge}}red{{end}}",
+            "{{if .CherryPick}}red{{end}}",
+            "{{if .Revert}}red{{end}}"
+          ],
+          "foreground_templates": [
+            "{{if .Rebase}}black{{end}}",
+            "{{if .Merge}}black{{end}}",
+            "{{if .CherryPick}}black{{end}}",
+            "{{if .Revert}}black{{end}}"
+          ],
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "{{ .HEAD }}",
+          "type": "git"
+        },
+        {
+          "foreground": "cyan",
+          "foreground_templates": [
+            "{{if .Behind}}lightRed{{end}}",
+            "{{if .Ahead}}green{{end}}",
+            ""
+          ],
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "{{if or (.Behind) (.Ahead)}} {{end}}{{if .Behind}}↓{{.Behind}}{{end}}{{if .Ahead}}↑{{.Ahead}}{{end}}",
+          "type": "git"
+        },
+        {
+          "style": "plain",
+          "template": "<darkGray,>]</> ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "lightYellow",
           "properties": {
             "style": "agnoster"
-          }
+          },
+          "style": "plain",
+          "template": "{{ .Path }}",
+          "type": "path"
         },
         {
           "foreground": "lightYellow",
@@ -40,7 +89,8 @@
           "template": "$ ",
           "type": "text"
         }
-      ]
+      ],
+      "type": "prompt"
     }
   ],
   "version": 2
