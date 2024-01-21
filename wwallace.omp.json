@@ -5,7 +5,7 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "cyan",
+          "foreground": "lightCyan",
           "foreground_templates": [
             "{{ if .Root }}red{{ end }}",
             "{{ if .SSHSession }}yellow{{ end }}",
@@ -22,12 +22,27 @@
       "alignment": "left",
       "segments": [
         {
+          "foreground": "lightYellow",
+          "properties": {
+            "style": "agnoster"
+          },
           "style": "plain",
-          "template": "<darkGray,>[</>",
+          "template": "{{ .Path }} ",
+          "type": "path"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "style": "plain",
+          "template": "<darkGray,>(</>",
           "type": "text"
         },
         {
-          "foreground": "cyan",
+          "foreground": "lightBlue",
           "background_templates": [
             "{{if .Rebase}}red{{end}}",
             "{{if .Merge}}red{{end}}",
@@ -45,27 +60,92 @@
             "fetch_status": true
           },
           "style": "plain",
-          "template": "{{ .HEAD }}",
+          "template": "{{ .HEAD }}{{if .Rebase}}|REBASE{{end}}{{if .Merge}}|MERGE{{end}}{{if .CherryPick}}|CHERRY-PICK{{end}}{{if .Revert}}|REVERT{{end}}",
           "type": "git"
         },
         {
-          "foreground": "cyan",
-          "foreground_templates": [
-            "{{if .Behind}}lightRed{{end}}",
-            "{{if .Ahead}}green{{end}}",
-            ""
-          ],
+          "foreground": "lightGreen",
           "properties": {
             "branch_icon": "",
             "fetch_status": true
           },
           "style": "plain",
-          "template": "{{if or (.Behind) (.Ahead)}} {{end}}{{if .Behind}}↓{{.Behind}}{{end}}{{if .Ahead}}↑{{.Ahead}}{{end}}",
+          "template": "{{if .Staging.Changed}}*{{end}}",
+          "type": "git"
+        },
+        {
+          "foreground": "green",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "{{if .Ahead}}↑{{.Ahead}}{{end}}",
+          "type": "git"
+        },
+        {
+          "foreground": "lightRed",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "{{if .Behind}}↓{{.Behind}}{{end}}{{if .Working.Changed}} {{end}}",
+          "type": "git"
+        },
+        {
+          "foreground": "red",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "{{if .Working.Unmerged}}x{{.Working.Unmerged}}{{end}}",
+          "type": "git"
+        },
+        {
+          "foreground": "lightRed",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "{{if .Working.Deleted}}-{{.Working.Deleted}}{{end}}",
+          "type": "git"
+        },
+        {
+          "foreground": "lightGreen",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "{{if .Working.Added}}+{{.Working.Added}}{{end}}",
+          "type": "git"
+        },
+        {
+          "foreground": "yellow",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "{{if .Working.Modified}}~{{.Working.Modified}}{{end}}",
+          "type": "git"
+        },
+        {
+          "foreground": "lightMagenta",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          },
+          "style": "plain",
+          "template": "{{if .Working.Untracked}}?{{.Working.Untracked}}{{end}}",
           "type": "git"
         },
         {
           "style": "plain",
-          "template": "<darkGray,>]</> ",
+          "template": "<darkGray,>)</> ",
           "type": "text"
         }
       ],
@@ -74,15 +154,6 @@
     {
       "alignment": "left",
       "segments": [
-        {
-          "foreground": "lightYellow",
-          "properties": {
-            "style": "agnoster"
-          },
-          "style": "plain",
-          "template": "{{ .Path }}",
-          "type": "path"
-        },
         {
           "foreground": "lightYellow",
           "style": "plain",
