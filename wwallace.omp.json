@@ -27,7 +27,7 @@
             "style": "agnoster"
           },
           "style": "plain",
-          "template": "{{ .Path }} ",
+          "template": "{{ .Path }}",
           "type": "path"
         }
       ],
@@ -39,7 +39,7 @@
         {
           "style": "plain",
           "template": "<darkGray,>(</>",
-          "type": "text"
+          "type": "git"
         },
         {
           "foreground": "lightMagenta",
@@ -146,14 +146,13 @@
         {
           "style": "plain",
           "template": "<darkGray,>)</> ",
-          "type": "text"
+          "type": "git"
         }
       ],
       "type": "prompt"
     },
     {
       "alignment": "left",
-      "newline": true,
       "segments": [
         {
           "foreground": "yellow",
