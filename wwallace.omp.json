@@ -22,7 +22,7 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "lightGreen",
+          "foreground": "cyan",
           "properties": {
             "style": "agnoster"
           },
@@ -42,7 +42,7 @@
           "type": "text"
         },
         {
-          "foreground": "magenta",
+          "foreground": "lightMagenta",
           "background_templates": [
             "{{if .Rebase}}red{{end}}",
             "{{if .Merge}}red{{end}}",
@@ -156,7 +156,7 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "lightYellow",
+          "foreground": "yellow",
           "style": "plain",
           "template": "$ ",
           "type": "text"
