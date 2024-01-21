@@ -64,7 +64,7 @@
           "type": "git"
         },
         {
-          "foreground": "lightGreen",
+          "foreground": "green",
           "properties": {
             "branch_icon": "",
             "fetch_status": true
