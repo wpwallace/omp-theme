@@ -22,7 +22,7 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "lightYellow",
+          "foreground": "lightGreen",
           "properties": {
             "style": "agnoster"
           },
@@ -153,6 +153,7 @@
     },
     {
       "alignment": "left",
+      "newline": true,
       "segments": [
         {
           "foreground": "lightYellow",
