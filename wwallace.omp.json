@@ -42,7 +42,7 @@
           "type": "text"
         },
         {
-          "foreground": "lightBlue",
+          "foreground": "magenta",
           "background_templates": [
             "{{if .Rebase}}red{{end}}",
             "{{if .Merge}}red{{end}}",
